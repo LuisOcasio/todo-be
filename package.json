@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon --exec babel-node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "start": "babel-node server.js"
   },
   "repository": {
     "type": "git",
@@ -19,14 +20,18 @@
   },
   "homepage": "https://github.com/LuisOcasio/todo-be#readme",
   "dependencies": {
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1"
-  },
-  "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/node": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.1.1",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.6"
   }
 }
