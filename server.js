@@ -4,6 +4,7 @@ import helmet from "helmet";
 import cors from "cors";
 import passport from "passport";
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const { Client } = require("pg");
 
 dotenv.config();
 const server = express();
@@ -12,6 +13,19 @@ server.use(helmet());
 server.use(cors());
 
 const port = process.env.PORT;
+
+const client = new Client({
+  user: process.env.RDS_USERNAME,
+  host: process.env.RDS_HOSTNAME,
+  database: process.env.RDS_DATABASE,
+  password: process.env.RDS_PASSWORD,
+  port: process.env.RDS_PORT,
+});
+
+client
+  .connect()
+  .then(() => console.log("Database is connected"))
+  .catch((err) => console.error("connection error", err.stack));
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
