@@ -20,6 +20,7 @@ const client = new Client({
   database: process.env.RDS_DATABASE,
   password: process.env.RDS_PASSWORD,
   port: process.env.RDS_PORT,
+  ssl:true
 });
 
 client
