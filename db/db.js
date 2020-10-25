@@ -1,4 +1,7 @@
+import dotenv from "dotenv";
 import { Client } from "pg";
+
+dotenv.config();
 
 const client = new Client({
   user: process.env.RDS_USERNAME,

@@ -4,6 +4,7 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import passport from "passport";
+require("../db/db");
 require("../config/passport-setup");
 import { Auth, User } from "../routes/index";
 
