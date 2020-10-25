@@ -8,6 +8,27 @@ const user = (sequelize, DataTypes) => {
         notEmpty: true,
       },
     },
+    password: {
+      type: DataTypes.VARCHAR,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    address: {
+      type: DataTypes.VARCHAR,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    phone: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
   });
 
   User.findByLogin = async (login) => {
