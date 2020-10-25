@@ -1,76 +1,26 @@
 import express from "express";
 import dotenv from "dotenv";
-import helmet from "helmet";
 import cors from "cors";
+import helmet from "helmet";
+import morgan from "morgan";
 import passport from "passport";
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const { Client } = require("pg");
+require("./config/passport-setup");
+import { Users } from "./routes/index";
 
 dotenv.config();
-const server = express();
 
-server.use(helmet());
+const server = express();
 server.use(cors());
+server.use(helmet());
+server.use(morgan("combined"));
+server.use(passport.initialize());
 
 const port = process.env.PORT;
 
-const client = new Client({
-  user: process.env.RDS_USERNAME,
-  host: process.env.RDS_HOSTNAME,
-  database: process.env.RDS_DATABASE,
-  password: process.env.RDS_PASSWORD,
-  port: process.env.RDS_PORT,
-});
-
-client
-  .connect()
-  .then(() => console.log("Database is connected"))
-  .catch((err) => console.error("connection error", err.stack));
-
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
-
-passport.deserializeUser((user, done) => {
-  done(null, user.id);
-});
-
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:3000/google/callback",
-    },
-    (accessToken) => {
-      console.log("access token: ", accessToken);
-    }
-  )
-);
-
-server.use(passport.initialize());
-
-server.get("/google", passport.authenticate("google", { scope: "profile" }));
-
-server.get(
-  "/google/callback",
-  passport.authenticate("google", { failureRedirect: "/login" }),
-  function (req, res) {
-    // Successful authentication, redirect home.
-    // res.redirect("/");
-    res.end("logged in");
-  }
-);
-
-server.get(
-  "/auth/google",
-  passport.authenticate("google", {
-    scope: ["profile", "email"],
-  })
-);
+server.use("/auth/google", Users);
 
 server.get("/", (req, res) => {
-  res.send("Hello World");
+  res.send(`<h1>This server is up and running.</h1>`);
 });
 
 server.listen(port, () => {
