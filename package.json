@@ -2,11 +2,12 @@
   "name": "todo-be",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node server.js",
-    "server": "nodemon --exec babel-node server.js",
-    "start": "babel-node server.js"
+    "dev": "nodemon --exec babel-node index.js",
+    "server": "nodemon --exec babel-node index.js",
+    "start": "babel-node index.js",
+    "build": "babel api -d dist"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,6 @@
   },
   "homepage": "https://github.com/LuisOcasio/todo-be#readme",
   "dependencies": {
-    "@babel/core": "^7.12.3",
     "@babel/node": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
@@ -28,11 +28,14 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^4.1.1",
+    "morgan": "^1.10.0",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
     "pg": "^8.4.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
     "nodemon": "^2.0.6"
   }
 }
