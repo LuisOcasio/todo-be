@@ -5,6 +5,14 @@ dotenv.config();
 
 const GoogleStrategy = passportGoogle.Strategy;
 
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser((user, done) => {
+  done(null, user.id);
+});
+
 passport.use(
   new GoogleStrategy(
     {

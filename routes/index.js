@@ -1,3 +1,5 @@
-import users from "./users";
+import auth from "./auth";
+import user from "./user";
 
-export const Users = users;
+export const Auth = auth;
+export const User = user;

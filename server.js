@@ -5,7 +5,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import passport from "passport";
 require("./config/passport-setup");
-import { Users } from "./routes/index";
+import { Auth, User } from "./routes/index";
 
 dotenv.config();
 
@@ -17,7 +17,8 @@ server.use(passport.initialize());
 
 const port = process.env.PORT;
 
-server.use("/auth/google", Users);
+server.use("/", User);
+server.use("/auth", Auth);
 
 server.get("/", (req, res) => {
   res.send(`<h1>This server is up and running.</h1>`);
