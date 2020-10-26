@@ -1,7 +1,7 @@
 const user = (sequelize, DataTypes) => {
   const User = sequelize.define("user", {
     username: {
-      type: DataTypes.VARCHAR,
+      type: DataTypes.STRING,
       unique: true,
       allowNull: false,
       validate: {
@@ -9,14 +9,14 @@ const user = (sequelize, DataTypes) => {
       },
     },
     password: {
-      type: DataTypes.VARCHAR,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
       },
     },
     address: {
-      type: DataTypes.VARCHAR,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
