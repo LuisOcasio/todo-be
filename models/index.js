@@ -3,14 +3,13 @@ import user from "./user";
 import async from "../middleware/async";
 
 const sequelize = new Sequelize(
-  async,
   process.env.RDS_DATABASE,
   process.env.RDS_USERNAME,
   process.env.RDS_PASSWORD,
-  process.env.RDS_URI,
   {
     dialect: process.env.DIALECT,
-  }
+  },
+  async
 );
 
 const models = {
