@@ -1,15 +1,13 @@
 import Sequelize from "sequelize";
 import user from "./user";
-import async from "../middleware/async";
 
 const sequelize = new Sequelize(
-  process.env.RDS_DATABASE,
-  process.env.RDS_USERNAME,
-  process.env.RDS_PASSWORD,
+  process.env.DATABASE,
+  process.env.DATABASE_USER,
+  process.env.DATABASE_PASSWORD,
   {
     dialect: process.env.DIALECT,
-  },
-  async
+  }
 );
 
 const models = {
