@@ -4,8 +4,8 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import passport from "passport";
-require("../db/db");
-require("../config/passport-setup");
+import "../config/passport-setup";
+import models, { sequelize } from "../models/index";
 import { Auth, User } from "../routes/index";
 
 dotenv.config();
