@@ -5,7 +5,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import passport from "passport";
 import "../config/passport-setup";
-import models, { sequelize } from "../models/index";
+import "../db/db";
 import { Auth, User } from "../routes/index";
 
 dotenv.config();
