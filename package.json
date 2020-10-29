@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "--exec babel-node api/server.js",
     "dev": "nodemon --exec babel-node api/server.js"
   },
   "repository": {
