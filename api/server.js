@@ -1,13 +1,12 @@
-import express from "express";
-import dotenv from "dotenv";
-import cors from "cors";
-import helmet from "helmet";
-import morgan from "morgan";
-import passport from "passport";
-import "../config/passport-setup";
-import { Auth, User } from "../routes/index";
+const express = require("express");
+const cors = require("cors");
+const helmet = require("helmet");
+const morgan = require("morgan");
+const passport = require("passport");
+require("../config/passport-setup");
+const { Auth, User } = require("../routes/index");
 
-dotenv.config();
+require("dotenv").config();
 
 const server = express();
 server.use(cors());
@@ -28,4 +27,4 @@ server.listen(port, () => {
   console.log(`Server listening on port ${process.env.PORT}!`);
 });
 
-export default server;
+module.exports = server;

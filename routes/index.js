@@ -1,5 +1,5 @@
-import auth from "./auth";
-import user from "./user";
+const auth = require("./auth");
+const user = require("./user");
 
-export const Auth = auth;
-export const User = user;
+exports.Auth = auth;
+exports.User = user;
