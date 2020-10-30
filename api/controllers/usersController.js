@@ -1,7 +1,28 @@
 const models = require("../models");
-
-const { user } = models;
+const bcrypt = require("bcrypt");
+const { User } = models;
 
 //In this file we will define are CRUD functionality for our users
+const registerUser = {
+  async register(req, res, next) {
+    try {
+      const { first, last, email, password, address, phone } = req.body;
+      const hash = bcrypt.hashSync(password, 10);
+      const user = User.create({
+        first,
+        last,
+        email,
+        address,
+        phone,
+        password: hash,
+      });
 
-const users = {};
+      const { id } = user;
+      return res.status(201).send({ user: { id, first, email } });
+    } catch (e) {
+      return next(new Error(e));
+    }
+  },
+};
+
+module.exports = registerUser;
