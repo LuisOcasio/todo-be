@@ -1,17 +1,21 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const passport = require("passport");
 require("../config/passport-setup");
 const { Auth, User } = require("../routes/index");
 
-require("dotenv").config();
-
 const server = express();
+
 server.use(cors());
 server.use(helmet());
 server.use(morgan("combined"));
+server.use(bodyParser.json());
+server.use(cookieParser());
 server.use(passport.initialize());
 
 const port = process.env.PORT;
