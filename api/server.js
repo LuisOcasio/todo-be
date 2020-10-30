@@ -10,7 +10,6 @@ const { Auth, User } = require("../routes/index");
 const corsOptions = {
   origin: ["*"],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true,
   optionsSuccessStatus: 204,
 };
 
@@ -19,7 +18,7 @@ const server = express();
 const port = process.env.PORT;
 
 server.use(express.json());
-server.use(helmet());
+server.use(helmet("dev"));
 server.use(cors(corsOptions));
 server.use(morgan("combined"));
 server.use(passport.initialize());
