@@ -7,19 +7,13 @@ const passport = require("passport");
 require("../config/passport-setup");
 const { Auth, User } = require("../routes/index");
 
-const corsOptions = {
-  origin: ["Access-Control-Allow-Origin", "*"],
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  optionsSuccessStatus: 204,
-};
-
 const server = express();
 
 const port = process.env.PORT;
 
 server.use(express.json());
-server.use(helmet("dev"));
-server.use(cors(corsOptions));
+server.use(helmet());
+server.use(cors());
 server.use(morgan("combined"));
 server.use(passport.initialize());
 
