@@ -7,7 +7,7 @@ module.exports = {
   },
   production: {
     database: "DATABASE_URL",
-    use_env_variable: process.env.RDS_URI,
-    dialect: process.env.DIALECT,
+    use_env_variable: "RDS_URI",
+    dialect: "DIALECT",
   },
 };
