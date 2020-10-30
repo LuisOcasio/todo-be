@@ -8,20 +8,20 @@ require("../config/passport-setup");
 const { Auth, User } = require("../routes/index");
 
 const corsOptions = {
-  origin: ["Access-Control-Allow-Origin", "*"],
+  origin: ["*"],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: false,
-  optionsSuccessStatus: 200,
+  credentials: true,
+  optionsSuccessStatus: 204,
 };
 
 const server = express();
 
 const port = process.env.PORT;
 
-server.use(cors(corsOptions));
-server.use(helmet());
-server.use(morgan("combined"));
 server.use(express.json());
+server.use(helmet());
+server.use(cors(corsOptions));
+server.use(morgan("combined"));
 server.use(passport.initialize());
 
 server.use("/", User);
