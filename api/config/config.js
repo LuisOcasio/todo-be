@@ -6,8 +6,7 @@ module.exports = {
     dialect: process.env.DIALECT,
   },
   production: {
-    database: "DATABASE_URL",
-    use_env_variable: "RDS_URI",
+    use_env_variable: "DATABASE_URL",
     dialect: "DIALECT",
   },
 };
