@@ -3,8 +3,6 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
 const passport = require("passport");
 require("../config/passport-setup");
 const { Auth, User } = require("../routes/index");
@@ -14,11 +12,18 @@ const server = express();
 server.use(cors());
 server.use(helmet());
 server.use(morgan("combined"));
-server.use(bodyParser.json());
-server.use(cookieParser());
+server.use(express.json());
 server.use(passport.initialize());
 
 const port = process.env.PORT;
+
+server.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Origin", PUT, POST, PATCH, DELETE, GET);
+  }
+  return res.status(200).json({});
+});
 
 server.use("/", User);
 server.use("/auth", Auth);
