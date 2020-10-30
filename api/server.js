@@ -8,7 +8,7 @@ require("../config/passport-setup");
 const { Auth, User } = require("../routes/index");
 
 const corsOptions = {
-  origin: ["*"],
+  origin: ["Access-Control-Allow-Origin", "*"],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   optionsSuccessStatus: 204,
 };
