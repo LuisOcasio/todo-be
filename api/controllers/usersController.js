@@ -6,11 +6,11 @@ const { User } = models;
 const registerUser = {
   async register(req, res, next) {
     try {
-      const { first, last, email, password, address, phone } = req.body;
+      const { firstName, lastName, email, password, address, phone } = req.body;
       const hash = bcrypt.hashSync(password, 10);
       const user = User.create({
-        first,
-        last,
+        firstName,
+        lastName,
         email,
         address,
         phone,
@@ -18,7 +18,7 @@ const registerUser = {
       });
 
       const { id } = user;
-      return res.status(201).send({ user: { id, first, email } });
+      return res.status(201).send({ user: { id, firstName, email } });
     } catch (e) {
       return next(new Error(e));
     }
