@@ -9,6 +9,7 @@ const registerUser = {
       const { firstName, lastName, email, phone, address, password } = req.body;
       const hash = bcrypt.hashSync(password, 10);
       const user = User.create({
+        id,
         firstName,
         lastName,
         email,
