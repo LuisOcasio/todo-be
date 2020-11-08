@@ -6,14 +6,14 @@ const { User } = models;
 const registerUser = {
   async register(req, res, next) {
     try {
-      const { firstName, lastName, email, password, address, phone } = req.body;
+      const { firstName, lastName, email, phone, address, password } = req.body;
       const hash = bcrypt.hashSync(password, 10);
       const user = User.create({
         firstName,
         lastName,
         email,
-        address,
         phone,
+        address,
         password: hash,
       });
 
