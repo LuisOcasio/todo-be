@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LuisOcasio/todo-be.git"
+    "url": "git+https://github.com/Web20-DayOnes/american-food-place-backend"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LuisOcasio/todo-be/issues"
+    "url": "https://github.com/Web20-DayOnes/american-food-place-backend/issues"
   },
-  "homepage": "https://github.com/LuisOcasio/todo-be#readme",
+  "homepage": "https://github.com/Web20-DayOnes/american-food-place-backend#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
